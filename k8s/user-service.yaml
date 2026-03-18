@@ -18,6 +18,16 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 3001
+
+        # ✅ ADD THIS BLOCK (VERY IMPORTANT)
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
+
         env:
         - name: DB_HOST
           value: postgres
@@ -29,6 +39,7 @@ spec:
           value: postgres
         - name: DB_PASSWORD
           value: postgres
+
 ---
 apiVersion: v1
 kind: Service
